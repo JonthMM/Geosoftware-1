@@ -1,0 +1,26 @@
+/* author: Jonathan Mader */
+
+body {
+    background-color: rgb(255, 255, 255);}
+
+h1 {
+    color: rgb(2, 2, 2);
+    text-align: justify;
+    font-family: Verdana, sans-serif;}
+
+p {
+    color: rgb(0, 0, 0);
+    text-align: justify;
+    width: 50%;
+    line-height: 1;
+    font-family: Verdana, sans-serif;}
+    
+table, th, td {
+    border: 3px solid rgb(7, 0, 70);
+    width: 50%;
+    height: 70px;
+    padding: 10px;
+    border-collapse: collapse;
+    color: rgb(0, 0, 0);
+    font-family: Verdana, sans-serif;
+    text-align: center;}
