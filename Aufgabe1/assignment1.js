@@ -3,37 +3,42 @@
 
 "use strict" 
 
-// Function to convert from degree to Rad for more accurate calculation
-function degToRad(deg) {
-    return deg * (Math.PI/180);  //conversion formula: 1° × π/180 = 0,01745 rad
-  }
+/**
+ * Function to convert degree coordinates into radian coordinates
+ * formula: degree * π/180 = rad
+ * @param {[float]} degrees coordinates (degrees)
+ * @returns converted coordinates in radian
+ */
+ function degtorad(degrees)
+ {
+   return degrees * (Math.PI/180);
+ }
 
 /**
- * Function to calculate the shortest distance on the earth using the haversine formula.
+ * Function for calculating the shortest distance between two points given in coordinates on the earth with the haversine formula.
  * Link: http://www.movable-type.co.uk/scripts/latlong.html
+ * Used functions: degtorad(degrees)
  * @param {[float,float]} point1 coordinates [lng/lat] 
  * @param {[float,float]} point2 coordinates [lng/lat] 
- * @returns shortest distance between the two points in kilometers.
+ * @returns shortest distance between the two given points in kilometers.
  */
- function distanceInkmMeter(point1,point2) {
-    var earthRadius = 6371; // Radius of the earth in km
-    var distanceLongitude = degToRad(point2[0]- point1[0]); // Distance on the longitude in rad
-    var distanceLatitude = degToRad(point2[1]- point1[1]);  // Distance on the latitude in rad
+ function distanceInkilometer(point1,point2) {
+    const R = 6371; // Radius of the earth in km
+    const distLongitude = degtorad(point2[0]- point1[0]); // Distance on the longitude in rad
+    const distLatitude = degtorad(point2[1]- point1[1]);  // Distance on the latitude in rad
 
-    var a = 
-      Math.sin(distanceLatitude/2) * Math.sin(distanceLatitude/2) +
-      Math.cos(degToRad(point1[1])) * Math.cos(degToRad(point2[1])) * 
-      Math.sin(distanceLongitude/2) * Math.sin(distanceLongitude/2)
-      ; //a is the square of half the chord length between the points
+    const a =   Math.sin(distLatitude/2) * Math.sin(distLatitude/2) +
+                Math.cos(degtorad(point1[1])) * Math.cos(degtorad(point2[1])) * 
+                Math.sin(distLongitude/2) * Math.sin(distLongitude/2); // a equals square of half the chord length between the points
     
-      var distanceRad = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); // Distance in rad
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); // Distance in rad
    
-      var distanceKM = earthRadius * distanceRad; // Distance in km
+    const distanceinKM = R * c; // Distance in km
     
-      return distanceKM;
+    return distanceinKM;
   }
-
-// constants because the points are set via point.js and cities.js and do not change
+  
+// constants (because the points are set via point.js and cities.js and do not change)
 const start = point;
 const cologne = cities[0];
 const amsterdam = cities[1];
@@ -48,17 +53,18 @@ const dublin = cities[9];
 const oslo = cities[10];
 
 // calculation of the distances from each city to the point
-var distcologne = distanceInkmMeter(point, cologne);
-var distamsterdam = distanceInkmMeter(point, amsterdam);
-var distkassel = distanceInkmMeter(point, kassel);
-var distbarcelona = distanceInkmMeter(point, barcelona);
-var disttunis = distanceInkmMeter(point, tunis)
-var distkyoto = distanceInkmMeter(point, kyoto)
-var distbucharest = distanceInkmMeter(point, bucharest)
-var distgraz = distanceInkmMeter(point, graz)
-var distkairo = distanceInkmMeter(point, kairo)
-var distdublin = distanceInkmMeter(point, dublin)
-var distoslo = distanceInkmMeter(point, oslo)
+var distcologne = distanceInkilometer(point, cologne);
+var distamsterdam = distanceInkilometer(point, amsterdam);
+var distkassel = distanceInkilometer(point, kassel);
+var distbarcelona = distanceInkilometer(point, barcelona);
+var disttunis = distanceInkilometer(point, tunis)
+var distkyoto = distanceInkilometer(point, kyoto)
+var distbucharest = distanceInkilometer(point, bucharest)
+var distgraz = distanceInkilometer(point, graz)
+var distkairo = distanceInkilometer(point, kairo)
+var distdublin = distanceInkilometer(point, dublin)
+var distoslo = distanceInkilometer(point, oslo)
+
 
 // allocation of the distanced to data variables 
 var data1 = distcologne.toFixed(2);
