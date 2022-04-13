@@ -4,7 +4,7 @@
 * @version 1.0.0
 */
 
-// This script calculates the distances between a given point from the point.js and the cities given as points in cities.js via latitude and longitude using the haversine formular and then allocates these distances to data variables to fill a HTML table with them
+// This script is for calculating the distances between a given point from the point.js and the cities given as points in cities.js via latitude and longitude using the haversine formular and then allocates these distances to data variables to fill a HTML table with them
 
 "use strict"
 
