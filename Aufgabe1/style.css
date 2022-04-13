@@ -1,25 +1,35 @@
 /* author: Jonathan Mader */
 
 body {
-    background-color: rgb(255, 255, 255);}
+  background-color: rgb(255, 255, 255);}
 
 h1 {
-    color: rgb(2, 2, 2);
-    font-family: Gill Sans Extrabold, sans-serif;}
+  color: rgb(2, 2, 2);
+  font-family: Gill Sans Extrabold, sans-serif;
+  font-size: 80px;
+  text-align: center;
+  text-decoration-line:underline;
+ }
 p {
-    color: rgb(0, 0, 0);
-    width: 50%;
-    line-height: 1;
-    font-family: Gill Sans Extrabold, sans-serif;}
-    
+  color: rgb(0, 0, 0);
+  width: 50%;
+  text-align: center;
+  font-size: 30px;
+  margin-left:auto;margin-right:auto;
+  font-family: Gill Sans Extrabold, sans-serif;}
+  
 table { 
-        border-collapse: collapse;
-      }
-      td, th {
-        border: thin solid rgb(0, 0, 0);
-        padding: 0.5rem;
-        text-align: center;
-        width: 750px;
-        height: 70px;
-        color: rgb(3, 0, 2);
+      border-collapse: collapse;
+      margin-left:auto;margin-right:auto;
+    }
+    td, th {
+      border: thin solid rgb(0, 0, 0);
+      padding: 0.5rem;
+      text-align: center;
+      width: 1000px;
+      height: 50px;
+      font-size: xx-large;
+      margin:1000px auto;
+      color: rgb(3, 0, 2);
+      
 }
