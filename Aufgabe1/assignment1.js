@@ -5,7 +5,7 @@
 */
 
 // This script is for calculating the distances between a given point from the point.js and the cities given as points in cities.js via latitude and longitude using the haversine formular and then allocates these distances to data variables to fill a HTML table with them
-
+// Extra: This code is written rather for styling and appearance of the website and is not focused on dynamic aspects
 "use strict"
 
 var distancesinkm = new Array(); // Creating the array that is used to store the value of the distances
