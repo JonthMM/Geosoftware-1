@@ -29,12 +29,12 @@ var distances = new Array();
  * @param {double} poi is the second set of coordinates given by poi array
 
  */
-function distanceinmeter(coord1, poi) {
-    for (var i = 0; i < poi.length; i++) {
+function distanceinmeter(coord1, coord2) {
+    for (var i = 0; i < 16; i++) {
         var lat1 = coord1.coordinates[1];
         var lon1 = coord1.coordinates[0];
-        var lon2 = poi[i][0]; // Allocation of longitude of the poi.js
-        var lat2 = poi[i][1]; // Allocation of latitude of the poi.js
+        var lon2 = pois.features[i].geometry.coordinates[0]; // Allocation of longitude of the poi.js
+        var lat2 = pois.features[i].geometry.coordinates[1]; // Allocation of latitude of the poi.js
 
         const R = 6371e3; // metres
         const phi1 = lat1 * Math.PI / 180;
@@ -212,7 +212,7 @@ givenpoint = point
 * @desc calls the distanceinmeter functions, fills the table with the calculated values of the distances array and clears the table if needed
 */
 function main(pointsforcalc) {
-    distanceinmeter(pointsforcalc, poi);
+    distanceinmeter(pointsforcalc, pois);
     clearTable();
     // building table for the HTML-webpage
     const table = document.getElementById("table")
