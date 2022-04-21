@@ -1,0 +1,59 @@
+/* author: Jonathan Mader */
+
+body {
+  background-color: rgb(255, 255, 255);
+  padding: 20px;
+}
+
+p {
+  color: rgb(0, 0, 0);
+  width: 50%;
+  font-size: 18px;
+  font-family: Gill Sans Extrabold, sans-serif;
+}
+
+#location {
+  font-family: Gill Sans Extrabold, Verdana, sans-serif;
+  width: 49%;
+  height: 200px;
+}
+
+.button {
+  background-color: #000000cb;
+  width: 49%;
+  color: rgb(255, 255, 255);
+  border: none;
+  padding: 15px 32px;
+  font-size: 18px;
+  border: 5px solid white
+}
+
+#errorMessage {
+  text-align: left
+}
+
+#uploadfield {
+  padding: 10px
+}
+
+#uploadInfo {
+  padding-left: 10px;
+  padding-top: 10px
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td,
+th {
+  border: thin solid rgb(0, 0, 0);
+  padding: 0.5rem;
+  text-align: center;
+  width: 300px;
+  height: 20px;
+  font-size: xx-large;
+  margin: 1000px auto;
+  color: rgb(3, 0, 2);
+
+}
