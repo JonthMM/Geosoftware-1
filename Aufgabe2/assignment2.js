@@ -23,11 +23,18 @@ alert(document.title);
 var distances = new Array();
 
 /**
+*@function deg2rad 
+*@desc arrow function for converting degree to radian
+*@param {double} degree
+*@returns {double} radian
+*/
+let deg2rad = (deg) => deg * (Math.PI/180);
+
+/**
  * @function distanceinmeter 
  * @desc calculates the distance between two points and stores the values in the distances array
  * @param {JSONConstructor} coord1 is the first set of coordinates given by the choosen point used
  * @param {double} poi is the second set of coordinates given by poi array
-
  */
 function distanceinmeter(coord1, coord2) {
     for (var i = 0; i < 16; i++) {
@@ -37,10 +44,10 @@ function distanceinmeter(coord1, coord2) {
         var lat2 = pois.features[i].geometry.coordinates[1]; // Allocation of latitude of the poi.js
 
         const R = 6371e3; // metres
-        const phi1 = lat1 * Math.PI / 180;
-        const phi2 = lat2 * Math.PI / 180;
-        const deltaphi = (lat2 - lat1) * Math.PI / 180;
-        const deltalamda = (lon2 - lon1) * Math.PI / 180;
+        const phi1 = deg2rad(lat1);
+        const phi2 = deg2rad(lat2);
+        const deltaphi = deg2rad(lat2 - lat1)
+        const deltalamda = deg2rad(lon2 - lon1)
 
         const a = Math.sin(deltaphi / 2) * Math.sin(deltaphi / 2) +
             Math.cos(phi1) * Math.cos(phi2) *
@@ -72,6 +79,7 @@ function getLocation() {
         x.innerHTML = "Geolocation is not supported by this browser.";
     }
 }
+
 /**
  * @function  showPosition 
  * @desc function to show the position of the user
@@ -85,6 +93,7 @@ function showPosition(position) {
     location = new JSONConstructor(location, "Point")
     document.getElementById("location").innerHTML = JSON.stringify(location)
 }
+
 /**
  * @function  showError 
  * @desc function to give out error if location could not be determined
@@ -135,6 +144,7 @@ function isValid(string) {
     }
     return true;
 }
+
 /**
  * @function JSONConstructor
  * @desc builds a JSON object 
@@ -145,8 +155,10 @@ function JSONConstructor(array, type) {
     this.type = type
     this.coordinates = array
 }
+
 // This variable stores the point which is given by the user via upload or text-input to calculate the distance to the pois 
 var givenpoint
+
 /**
  * @function getInputValue
  * @desc - textarea input get read and is stored as GeoJSON object-type "Point", then calls main method with the new point
@@ -164,6 +176,7 @@ function getInputValue() {
         document.getElementById("errorMessage").innerHTML = "ERROR: This is not a valid GeoJSON"
     }
 }
+
 /**
  * @function useStandard
  * @desc - uses the standard point from the point.js as point and calls the main function with it
@@ -172,6 +185,7 @@ function useStandard() {
     givenpoint = point
     main(givenpoint)
 }
+
 // creating upload button to use on html website
 let uploadbutton = document.getElementById("uploadbutton")
 // creating reader variable for reading the given file
@@ -183,6 +197,7 @@ uploadbutton.addEventListener('change', function () {
         reader.readAsText(uploadbutton.files[0])
     }
 })
+
 /**
  * @function getFile 
  * @desc - calculates the distance from the uploaded point when it is a "Point" object in valid geojson 
