@@ -16,7 +16,7 @@
  document.head.appendChild(meta);
  
  // creating a title for our website and displaying it with alert pop up
- document.title = "This is Assignement 2 for Geosoftware 1 by Jonathan Mader with an additional leaflet visualization ;)";
+ document.title = "This is Assignement 2 for Geosoftware 1 by Jonathan Mader";
  alert(document.title);
  
  // creating an array to store the calculated distances in
