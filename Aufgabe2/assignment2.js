@@ -32,7 +32,7 @@
  /**
   * @function distanceinmeter 
   * @desc calculates the distance between two points and stores the values in the distances array
-  * @param {JSONConstructor} coord1 is the first set of coordinates given by the choosen point used
+  * @param {GeoJSONConstructor} coord1 is the first set of coordinates given by the choosen point used
   * @param {double} poi is the second set of coordinates given by poi array
  
   */
@@ -86,7 +86,7 @@
   */
  function insertPosition(position) {
      let location = new Array(position.coords.longitude, position.coords.latitude)
-     location = new JSONConstructor(location, "Point")
+     location = new GeoJSONConstructor(location, "Point")
      document.getElementById("location").innerHTML = JSON.stringify(location)
  }
  /**
@@ -113,25 +113,12 @@
  }
  
  /**
-  * @function clearTable
-  * @desc deletes all rows to clear the table so they dont add up
+  * @function JSONvalidate
+  * @desc checks whether the given String is a valid stringified JSON
+  * @param {String} string stringified JSON
+  * @throws error, if a not stringified JSON String is detected
   */
- function clearTable() {
-     var t = document.getElementById("table")
-     var childCounter = t.childElementCount
- 
-     for (var i = 0; i < childCounter; i++) {
-         t.removeChild(t.lastChild) // removes children
-     }
- }
- 
- /**
-  * @function isvalid
-  * @desc checks whether the given string is a valid stringified JSON
-  * @param {string} string stringified JSON
-  * @throws error, if a not strigified JSON string is detected
-  */
- function isValid(string) {
+ function JSONvalidate(string) {
      try {
          JSON.parse(string);
      } catch (error) {
@@ -140,25 +127,31 @@
      return true;
  }
  /**
-  * @function JSONConstructor
-  * @desc builds a JSON object 
+  * @constructor GeoJSONConstructor
+  * @desc builds a GeoJSON object 
   * @param {[[coordinates],[coordinates],..,[coordinates]]} array array for transformation
-  * @param {string} type given GeoJSON object-type
-  * @source https://www.w3schools.com/js/js_object_constructors.asp
+  * @param {String} type given GeoJSON object-type
   */
- function JSONConstructor(array, type) {
-     this.type = type
-     this.coordinates = array
- }
+ class GeoJSONConstructor {
+    constructor(array, type) {
+        this.type = type;
+        this.coordinates = array;
+    }
+}
+
+// building up new objects to transform the given arrays to JSON
+point = new GeoJSONConstructor(point, "Point")
+givenpoint = point
+
  // This variable stores the point which is given by the user via upload or text-input to calculate the distance to the pois 
  var givenpoint
  /**
-  * @function getInputValue
-  * @desc textarea input get read and is stored as GeoJSON object-type "Point", then calls main method with the new point
+  * @function textareaInputPoint
+  * @desc textarea input gets read and is stored as GeoJSON object-type "Point", then calls main method with the new point
   */
- function getInputValue() {
+ function textareaInputPoint() {
      document.getElementById("errorforinput").innerHTML = ""
-     if (isValid(document.getElementById("location").value) == true) { // Checks whether the location is valid
+     if (JSONvalidate(document.getElementById("location").value) == true) { // Checks whether the location is valid
          if ((JSON.parse(document.getElementById("location").value)).type != "Point") {
              document.getElementById("errorforinput").innerHTML = 'Failed, geometry type is not Point. Expected pattern: {"type":"Point","coordinates":[...]}'
          } else {
@@ -173,7 +166,7 @@
   * @function useStandard
   * @desc uses the standard point from the point.js as point and calls the main function with it
   */
- function useStandard() {
+ function standardPoint() {
      givenpoint = point
      main(givenpoint)
  }
@@ -189,13 +182,13 @@
      }
  })
  /**
-  * @function getFile 
+  * @function uploadedPoint 
   * @desc calculates the distance from the uploaded point when it is a "Point" object in valid geojson 
   * by replacing the point with the given point from the uploaded file and calling the main method with it
   */
- function getFile() {
+ function uploadedPoint() {
      document.getElementById("errorforupload").innerHTML = ""
-     if (isValid(reader.result) == true) { // Checks whether the input is valid
+     if (JSONvalidate(reader.result) == true) { // Checks whether the input is valid
          if ((JSON.parse(reader.result)).type != "Point") {
              document.getElementById("errorforupload").innerHTML = 'Failed, geometry type is not Point. Expected pattern: {"type":"Point","coordinates":[...]}'
          } else {
@@ -206,19 +199,28 @@
          document.getElementById("errorforupload").innerHTML = "Failed, no valid GeoJSON found"
      }
  }
- 
- // building up new objects to transform the given arrays to JSON
- point = new JSONConstructor(point, "Point")
- givenpoint = point
- 
+
+ /**
+  * @function tableclearer
+  * @desc deletes all rows to clear the table so they dont add up
+  */
+  function tableclearer() {
+    var t = document.getElementById("table")
+    var childCounter = t.childElementCount
+
+    for (var i = 0; i < childCounter; i++) {
+        t.removeChild(t.lastChild)
+    }
+}
+
  /**
   * @function main the main function
-  * @param pointsforcalc given point by the user for calculating the distance between it and the set of pois
+  * @param usedpoint given point by the user for calculating the distance between it and the set of pois
   * @desc calls the distanceinmeter functions, fills the table with the calculated values of the distances array and clears the table if needed
   */
- function main(pointsforcalc) {
-     distanceinmeter(pointsforcalc, pois);
-     clearTable();
+ function main(usedpoint) {
+     distanceinmeter(usedpoint, pois);
+     tableclearer();
      // building table for the HTML-webpage
      const table = document.getElementById("table")
      const hrow = document.createElement("tr")
