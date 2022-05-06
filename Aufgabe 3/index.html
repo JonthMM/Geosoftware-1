@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<head>
+  <title>Assignment 1 for Geosoftware 1</title>
+  <link rel="stylesheet" type="text/css" href="src/style.css">
+</head>
+
+<body onload="onLoad()">
+  <script src="src/point.js"></script>
+  <script defer src="src/script.js"></script>
+
+  <div align="center">
+    <h1>GeoSoftware 1 Assignment 3</h1>
+    <div>
+      Assignment 03<br>
+      Course: Geosoftware I SoSe 2022 <br>
+      Author: Jonathan Mader <br> <br></div>
+
+    <a href="https://api.busradar.conterra.de/demo/index.html" target="_blank">Live Ansicht von conterra</a>
+    <br></br>
+    <a href="https://netzplan-muenster.de/#" target="_blank">Netzplan Live Ansicht der Stadt Münster</a>
+    <br></br>
+    <div id="position">Click the button to get your coordinates</div>
+    <button class="button" type="button" onclick="Positioning.getLocation()"">get position</button>
+    <br></br>
+    <textarea type=" text" id="userPosition"
+      placeholder="Enter Point as geojson or click get position to use your position"></textarea>
+      <div id="errorforinput"></div>
+      <br></br>
+      <button id="textareabutton" type="button" class="button" onclick="Frontendfunctions.textareaInputPoint()">Use
+        geojson input from
+        textarea</button>
+      <br></br>
+      <button id="standardpointbutton" type="button" class="button" onclick="Frontendfunctions.standardPoint()">Use the
+        given standard
+        point</button>
+      <div id="uploadInfo">Upload your own geojson that has the object type Point (no feature collection)</div>
+      <input type="file" id="uploadbutton"><br>
+      <div id="errorforupload"></div><br>
+      <br>
+      <button id="uploadedpointbutton" type="button" class="button" onclick="Frontendfunctions.uploadedPoint()">Use
+        uploaded
+        geojson</button>
+      <br></br>
+      <br>
+      <p id="nextDeparturesHeader"></p>
+
+      <table id="firstTable">
+        <tr>
+          <th>Busline</th>
+          <th>Direction</th>
+          <th>Date and time of departure</th>
+        </tr>
+      </table>
+      <br>
+      <p>list of busstops sorted ascending by distance with direction to compare to the first table</p>
+      <table id="secondTable">
+        <tr>
+          <th>Bus stop name</td>
+          <th>Coordinates</td>
+          <th>Distance (in meters)</td>
+          <th>Direction</th>
+        </tr>
+      </table>
+</body>
+
+</HTML>
