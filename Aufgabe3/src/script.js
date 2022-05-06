@@ -238,14 +238,14 @@ class Tablestructure {
    */
   static firstTableHeader(nextBusStop, secondNextBusStop) {
     if (nextBusStop === undefined && secondNextBusStop === undefined) {
-      document.getElementById("nextDeparturesHeader").innerHTML = "no depatures in the next 30 minutes from the two nearest busstops!";
+      document.getElementById("firstTableHeader").innerHTML = "no depatures in the next 30 minutes from the two nearest busstops!";
     } else if (secondNextBusStop === undefined) {
       let message = "departures from " + nextBusStop + " in the next 30 minutes";
-      document.getElementById("nextDeparturesHeader").innerHTML = message;
+      document.getElementById("firstTableHeader").innerHTML = message;
     }
     else {
       let message = "departures from " + nextBusStop + " and " + secondNextBusStop + " in the next 30 minutes";
-      document.getElementById("nextDeparturesHeader").innerHTML = message;
+      document.getElementById("firstTableHeader").innerHTML = message;
     }
   }
   /**
