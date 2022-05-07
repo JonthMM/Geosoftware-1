@@ -1,4 +1,4 @@
-#Aufgab3
+#Aufgabe3
 
 My files for the 3rd Assignment of the Geosoftware 1 course
 
