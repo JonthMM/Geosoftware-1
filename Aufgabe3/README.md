@@ -8,3 +8,7 @@ bus line nummer, end stop, depature time and date, name of the bus stop, distanc
 and the coordinates of the bus stop.
 
 Be aware of the bus depature, or you might miss it ;)
+
+And YES I did play around with CSS a bit ^^
+
+Can you find the hidden meme in the index.html file?
