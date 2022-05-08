@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<head>
+  <title>Assignment 1 for Geosoftware 1</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="src/style.css">
+</head>
+
+<body onload="onLoad()">
+  <script src="src/point.js"></script>
+  <script defer src="src/script.js"></script>
+  <div class="busstop">
+    <img src="src/animation/busstop.png" alt="">
+  </div>
+  <div class="bus">
+    <img src="src/animation/bus.png" alt="">
+  </div>
+
+  <div align="center">
+    <h1>GeoSoftware 1 Assignment 3</h1>
+    <!-- Button that opens my GitHub repository for the Geosoftware 1 Assignments -->
+    <div class="social">
+      <a href="https://github.com/JonthMM/Geosoftware-1" target="_blank"><ion-icon name="logo-github" style="color:#DE4C52"></ion-icon></a>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <div>
+      Assignment 03<br>
+      Course: Geosoftware I SoSe 2022 <br>
+      Author: Jonathan Mader <br> 
+      Please only view in max view, not in window mode!<br>
+
+    </div>
+    <br>
+    <a href="https://api.busradar.conterra.de/demo/index.html" target="_blank">Live Ansicht von conterra</a>
+
+    <br></br>
+
+    <a href="https://netzplan-muenster.de/#" target="_blank">Netzplan Live Ansicht der Stadt Münster</a>
+
+    <br></br>
+    <!-- Button to get the user position and insert it into the textarea -->
+    <div id="position">Click the button to get your coordinates</div>
+    <br>
+    
+    <button class="getLocationButton" onclick="Positioning.getLocation()"">want your location?</button>
+    <br></br>
+
+    <!-- Textare to insert GeoJSON -->
+    <textarea type=" text" id="userPosition"
+      placeholder="Enter Point as geojson or click get position to use your position"></textarea>
+      <div id="errorforinput"></div>
+      <br>
+    <!-- Button to use the GeoJSON from the textarea, source for design: https://codepen.io/jh3y/pen/PoGbxLp-->
+    <button id="textareabutton" type="button" class="cybr-btn" onclick="Frontendfunctions.textareaInputPoint()">
+      <span aria-hidden class="cybr-btn__glitch"></span>
+      <span aria-hidden class="cybr-btn__tag">txtarea</span>
+      Use geojson input from textarea
+    </button>
+    <br></br>
+
+    <!-- Button to use the GeoJSON from the standard point from point.js -->
+    <button id="standardpointbutton" type="button" class="shine" onclick="Frontendfunctions.standardPoint()">
+      
+      Use the given standardpoint</button>
+    <br></br>
+    
+    <!-- Uploadarea with description for user, upload button to choose a file and error if upload went wrong -->
+    <div id="uploadInfo">Upload your own geojson that has the object type Point (no feature collection)</div>
+    <input type="file" id="uploadbutton">
+    <div id="errorforupload"></div>
+    
+
+    <!-- Button to use the uploaded GeoJSON by the user, source: https://codepen.io/Alexb98/pen/XWrqpxB -->
+    <button id="uploadedpointbutton" type="button" class="animated-button1" onclick="Frontendfunctions.uploadedPoint()">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      USE UPLOADED GEOJSON
+    </button>
+
+    <!-- Header for the first table to let the user know better which two bus stops the depatures are from -->
+    <p id="nearestStopTableHeader"></p>
+
+    <!-- First table with Busline number, direction of the bus as last bus stop from the route and the date and time of the depature as YYYY:MM:DD:T:hh:mm:ss in GMT
+    so you currently have to add 2 hours for the real time depatures  -->
+    <table id="nearestStopTable">
+      <tr>
+        <th>Busline</th>
+        <th>Direction</th>
+        <th>Date and time of departure</th>
+      </tr>
+    </table>
+    <br>
+    <!-- Header for the first table to let the user know better which two bus stops the depatures are from -->
+    <p id="secondNearestStopTableHeader"></p>
+    <table id="secondNearestStopTable">
+      <tr>
+        <th>Busline</th>
+        <th>Direction</th>
+        <th>Date and time of departure</th>
+      </tr>
+    </table>
+    
+    <!-- Second table with header for user to read the table better, table shows the bus stop name, the distance, direction in text and the coordinates of the bus stops -->
+    <p>list of busstops sorted ascending by distance with direction to compare to the first table</p>
+    <table id="allBusStopsTable">
+      <tr>
+        <th>Bus stop name</td>
+        <th>Distance (in meters)</td>
+        <th>Direction</th>
+        <th>Coordinates</td>
+      </tr>
+    </table>
+    
+</body>
+
+</HTML>
