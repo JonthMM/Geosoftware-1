@@ -167,7 +167,7 @@
     * here shortened to YYYY:MM:DD:T:hh:mm:ss
     * @meme https://www.reddit.com/r/ProgrammerHumor/comments/ukk563/the_start_of_time/
     * @source https://stackoverflow.com/questions/6312993/javascript-seconds-to-time-string-with-format-hhmmss
-    * @param seconds time in milliseconds
+    * @param seconds time in seconds
     */
    static secondsToTime(seconds) {
      var ms = seconds * 1000;
