@@ -164,13 +164,12 @@
    /**
     * secondsToTime
     * @desc converts the given time in seconds by the API to ISO 8601
-    * here shortened to YYYY:MM:DD:T:hh:mm
+    * here shortened to YYYY:MM:DD:T:hh:mm:ss
     * @meme https://www.reddit.com/r/ProgrammerHumor/comments/ukk563/the_start_of_time/
     * @source https://stackoverflow.com/questions/6312993/javascript-seconds-to-time-string-with-format-hhmmss
     * @param seconds time in milliseconds
     */
    static secondsToTime(seconds) {
-     seconds = parseInt(seconds); //ensure the value is an integer
      var ms = seconds * 1000;
      var date = new Date(ms)
      var time = date.toISOString().slice(0, -5);
