@@ -127,7 +127,7 @@
      Tablestructure.clearTable("nearestStopTable");
    }
    /**
-    * abfahrten
+    * abfahrtenZwei
     * @public
     * @desc this method is called when the nearest busstops got calculated, uses the id of it
     * to get the upcoming depatures
@@ -135,7 +135,7 @@
     * @param time in seconds from the current timestamp
     */
     abfahrtenZwei(id, time) {
-      const x = new XMLHttpRequest;
+      const x = new XMLHttpRequest();
       let resource = `https://rest.busradar.conterra.de/prod/haltestellen/${id}/abfahrten?sekunden=`;
       resource += time || 1800;
   
