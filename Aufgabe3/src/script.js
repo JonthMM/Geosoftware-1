@@ -261,7 +261,7 @@
    static drawAllBusStopsTable(resultarray) {
      var table = document.getElementById("allBusStopsTable");
      //creates the Table with the direction an distances
-     for (var j = 0; j < resultarray.length; j++) {
+     for (var j = 0; j < 35; j++) {
        var newRow = table.insertRow(j + 1);
        var cel1 = newRow.insertCell(0);
        var cel2 = newRow.insertCell(1);
