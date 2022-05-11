@@ -385,20 +385,6 @@ class Distancecalculation {
  * @class
  */
 class GeoJSON {
-  constructor() {
-    this.featureCollection = {
-      "type": "FeatureCollection",
-      "features": []
-    };
-    this.pointFeature = {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Point",
-        "coordinates": []
-      }
-    };
-  }
   /**
    * arrayToGeoJSON
    * @public
