@@ -363,7 +363,6 @@ class Distancecalculation {
         j++;
       }
       let newPoint = {
-        index: i,
         // name of the busstop
         name: pointArray.features[i].properties.lbez,
         // coordinates of the busstop
