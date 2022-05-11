@@ -42,10 +42,10 @@
   */
  function main(point, pointcloud) {
    let resultarray = Distancecalculation.sortByDistance(point, pointcloud);
-   // 1800 seconds for 30 minutes instead of 5 minutes (300 seconds) as said in the task because it makes more sense for the user (there are rarely bus stops shown for 5 minutes)
+   // 1800 seconds for 30 minutes instead of 5 minutes (300 seconds) as said in the task because it makes more sense for the user (there are rqarely bus stops shown for 5 minutes)
    bushaltestellen.abfahrtenZwei(resultarray[1].id, 1800);
    bushaltestellen.abfahrten(resultarray[0].id, 1800);
-   Tablestructure.clearTable('allBusStopsTable');
+   Tablestructure.tableClearer('allBusStopsTable');
    Tablestructure.drawAllBusStopsTable(resultarray);
    Tablestructure.nearestStopTableHeader(resultarray[0].name);
    Tablestructure.secondNearestStopTableHeader(resultarray[1].name);
@@ -97,8 +97,8 @@
    /**
     * abfahrten
     * @public
-    * @desc this method is called when the nearest busstops got calculated, uses the id of it
-    * to get the upcoming depatures
+    * @desc this method is called when the nearest busstops got calculated
+    * and uses the id of it to get the upcoming depatures
     * @param id busstop id from the API
     * @param time in seconds from the current timestamp
     */
@@ -126,7 +126,7 @@
      };
  
      x.send();
-     Tablestructure.clearTable("nearestStopTable");
+     Tablestructure.tableClearer("nearestStopTable");
    }
    /**
     * abfahrtenZwei
@@ -160,7 +160,7 @@
       };
   
       x.send();
-      Tablestructure.clearTable("secondNearestStopTable");
+      Tablestructure.tableClearer("secondNearestStopTable");
     }
  
    /**
@@ -278,12 +278,13 @@
    }
  
    /**
-    * clearTable
+    * tableClearer
     * @public
-    * @desc removes all table entries and rows except for the header.
-    * @param tableID the id of the table to clear
+    * @desc deletes all rows to clear the table so they dont add up
+    * @source refresh function from Beispiellösung 02 
+    * @param tableID id of the table that we want to clear
     */
-   static clearTable(tableID) {
+   static tableClearer(tableID) {
      //remove all table rows
      var tableHeaderRowCount = 1;
      var table = document.getElementById(tableID);
@@ -407,12 +408,10 @@
     * @returns JSON of a geoJSON FeatureCollection
     */
    static arrayToGeoJSON(inputArray) {
-     //reset the skeleton, because it's an object reference
      this.featureCollection = {
        "type": "FeatureCollection",
        "features": []
      };
-     //"Skeleton" of a valid geoJSON Feature collection
      let outJSON = this.featureCollection;
  
      //turn all the points in the array into proper features and append
