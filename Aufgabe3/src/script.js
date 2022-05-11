@@ -165,16 +165,16 @@ class BusRadarAPI {
   /**
    * secondsToTime
    * @desc converts the given time in seconds by the API to ISO 8601
-   * here shortened to YYYY:MM:DD:T:hh:mm:ss
+   * here as YYYY:MM:DD:T:hh:mm:ss
    * @meme https://www.reddit.com/r/ProgrammerHumor/comments/ukk563/the_start_of_time/
    * @source https://stackoverflow.com/questions/6312993/javascript-seconds-to-time-string-with-format-hhmmss
    * @param seconds time in seconds
    */
   static secondsToTime(seconds) {
-    var ms = seconds * 1000;
+    var ms = seconds * 1000  + (60000 * 120);
     var date = new Date(ms)
     var time = date.toISOString().slice(0, -5);
-    return time + " GMT";
+    return time;
   }
 }
 
