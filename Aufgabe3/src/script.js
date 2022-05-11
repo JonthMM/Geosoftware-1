@@ -201,7 +201,7 @@ class Tablestructure {
   /**
    * drawNearestStopTable
    * @desc draws the table for the nearest bus stop containg the linienid as number
-   * the direction as end stop and the actual depature time with date and time as YY:MM:DD:T:hh:mm:ss GMT
+   * the direction as end stop and the actual depature time with date and time as YY:MM:DD:T:hh:mm:ss
    * @param {*} resultarray array of JSON with contains
    */
   static drawNearestStopTable(resultarray) {
@@ -235,7 +235,7 @@ class Tablestructure {
   /**
    * drawSecondNearestStopTable
    * @desc draws the table for the second nearest bus stop containg the linienid as number
-   * the direction as end stop and the actual depature time with date and time as YY:MM:DD:T:hh:mm:ss GMT
+   * the direction as end stop and the actual depature time with date and time as YY:MM:DD:T:hh:mm:ss 
    * @param {*} resultarray array of JSON with contains
    */
   static drawSecondNearestStopTable(resultarray) {
