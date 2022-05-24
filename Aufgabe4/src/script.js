@@ -639,11 +639,9 @@ map.on(L.Draw.Event.CREATED, (e) => {
       }).addTo(map)
 
       marker.bindPopup("Bus stop name: " + drawnPolygonBusStops[i].name + "<br> Distance to used Point: " + drawnPolygonBusStops[i].distance +
-        "m <br> Direction: " + drawnPolygonBusStops[i].richtung + "<br>Coordinates of bus stop: " + drawnPolygonBusStops[i].coordinates, customOptionsBusStops)
+        "<br> Direction: " + drawnPolygonBusStops[i].richtung + "<br>Coordinates of bus stop: " + drawnPolygonBusStops[i].coordinates, customOptionsBusStops)
 
-      console.log("Bus stop is inside of the drawn polygon")
-    } else {
-      console.log("Bus stop is outside of the drawn polygon")
+      
     }
   }
 })
