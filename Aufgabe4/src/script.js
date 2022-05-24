@@ -1,5 +1,5 @@
 /**
- * Aufgabe 3, Geosoft 1, SoSe 2022
+ * Aufgabe 4, Geosoft 1, SoSe 2022
  * @author Jonathan Mader, matr.Nr.: 502644
  */
 
@@ -12,11 +12,12 @@ meta.content = "Author: Jonathan Mader";
 document.head.appendChild(meta);
 var meta = document.createElement('meta');
 meta.description = "description";
-meta.content = "This website shows the nearest bus stop(s) with their relevant information given from either the users location, an input point via geojson, the given standard point, or an uploaded geojson point";
+meta.content = "This website shows the nearest bus stop(s) with their relevant information given from either the users location, an input point via geojson, the given standard point, or an uploaded geojson point" +
+  "aswell as a map showing either all bus stops with given information depending in popup with marker depending on the used point or just the bus stops inside a drawn polygon as bbox";
 document.head.appendChild(meta);
 
 // creating a title for our website (and displaying it with alert pop up)
-document.title = "This is Assignement 3 for Geosoftware 1 by Jonathan Mader";
+document.title = "This is Assignement 4 for Geosoftware 1 by Jonathan Mader";
 //alert(document.title);
 
 // declaration of global variables
@@ -24,6 +25,7 @@ var pointcloud = [];
 var standardPointArray = [];
 var textAreaPointArray = [];
 var uploadedPointArray = [];
+var rectangle = [];
 var drawnPolygonBusStops = [];
 var point;
 var givenpoint;
@@ -33,10 +35,9 @@ var depatures;
 /**
  * @function onLoad function that is executed when the page is loaded
  */
-function onLoad() {}
+function onLoad() {
 
-
-
+}
 
 //##############################################################################
 //## FUNCTIONS
@@ -66,7 +67,7 @@ class BusRadarAPI {
   /**
    * haltestellen
    * @public
-   * @desc method performs a GET request to to the given API the get the wanted information
+   * @desc method fetches the wanted information from the API
    * about the busstops from it and then uses this data to fill the pointcloud array
    * and calling the main method with the new data
    */
@@ -226,6 +227,7 @@ class Tablestructure {
       cel4.innerHTML = resultarray[j].coordinates;
     }
   }
+  // drawing map markers with pop up and wanted information
   static drawAllMapMarkers(resultarray) {
     for (var i = 0; i < resultarray.length; i++) {
       let marker = new L.marker([resultarray[i].coordinates[1], resultarray[i].coordinates[0]], {
@@ -547,9 +549,11 @@ class Positioning {
   }
 }
 
-// -------------------- Leaflet ---------------------------------
+//##############################################################################
+//## LEAFLET
+//##############################################################################
 
-// leaflet map with OSM basemap and Münster centered as standard view
+// Creating a leaflet map centered to Münster and with OSM as basemap
 var map = new L.Map('busStopMap', {
   center: new L.LatLng(51.9606649, 7.6261347),
   zoom: 13
@@ -573,6 +577,7 @@ function displayLocation(position) {
   map.setView([lat, lng], 16);
 }
 
+// styling for the icon for the bus stops
 var BusStopIcon = L.icon({
   iconUrl: 'src/busstop.png',
   iconSize: [25, 25], // size of the icon
@@ -589,8 +594,6 @@ var customPoint = {
   'maxWidth': '500',
   'className': 'custom2'
 }
-
-var rectangle = [] // coordinates of the drawn rectangle (bounding box) are stored here
 
 //drawcontrol variables
 var drawnItems = new L.FeatureGroup()
@@ -623,7 +626,6 @@ map.on(L.Draw.Event.CREATED, (e) => {
   // calculating distances to default point and getting the information wanted for the pop ups
   var drawnPolygonBusStops = Distancecalculation.sortByDistance(point, pointcloud);
 
-
   for (var i = 0; i < drawnPolygonBusStops.length; i++) {
 
     var poly = turf.polygon(rectangle);
@@ -632,20 +634,19 @@ map.on(L.Draw.Event.CREATED, (e) => {
     // checking if the coodinates from the bus stops from the array are inside the drawn polygon with turf.booleanPointInPolygon
     turf.booleanPointInPolygon(pt, poly)
     if (turf.booleanPointInPolygon(pt, poly) == true) {
-    let marker = new L.marker([drawnPolygonBusStops[i].coordinates[1], drawnPolygonBusStops[i].coordinates[0]], {
+      let marker = new L.marker([drawnPolygonBusStops[i].coordinates[1], drawnPolygonBusStops[i].coordinates[0]], {
         icon: BusStopIcon
       }).addTo(map)
-      
+
       marker.bindPopup("Bus stop name: " + drawnPolygonBusStops[i].name + "<br> Distance to used Point: " + drawnPolygonBusStops[i].distance +
         "m <br> Direction: " + drawnPolygonBusStops[i].richtung + "<br>Coordinates of bus stop: " + drawnPolygonBusStops[i].coordinates, customOptionsBusStops)
-        
+
       console.log("Bus stop is inside of the drawn polygon")
     } else {
       console.log("Bus stop is outside of the drawn polygon")
     }
   }
 })
-
 
 //##############################################################################
 //## OBJECTS
