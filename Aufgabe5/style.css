@@ -1,3 +1,10 @@
+.card {
+  background-image: url(images/background.png);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100%;
+}
+
 .social{
   width:200px;
   display: flex;
