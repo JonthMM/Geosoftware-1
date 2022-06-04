@@ -1,0 +1,34 @@
+.social{
+  width:200px;
+  display: flex;
+}
+.social >a{
+  margin-right: auto;
+  margin-left: auto;
+  width: 50%;
+  font-size:2rem;
+  box-shadow: rgb(255, 255, 255) 3px 3px 6px 0px, rgba(255, 255, 255) -3px -3px 6px 1px;
+  height:50px;
+  justify-content:center;
+  align-items:center;
+  cursor: pointer;
+  text-decoration: none;
+  border-radius:5px;
+  background: rgb(221, 220, 220);
+  transition:0.4s;
+  display:flex;
+}
+.social >a:hover{
+  margin-right: auto;
+  margin-left: auto;
+  transform:translateY(-10px);
+  color: var(--color);
+}
+@font-face {
+  font-family: Cyber;
+  src: url("https://assets.codepen.io/605876/Blender-Pro-Bold.otf");
+  font-display: swap;
+}
+.nav-item:hover {
+  background-color: lightblue;
+}
