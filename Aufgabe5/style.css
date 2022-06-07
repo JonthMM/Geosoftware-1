@@ -1,7 +1,5 @@
-
 .card-body{
   color: rgb(0, 0, 0);
-  
 }
 .card-footer{
   color: rgb(0, 0, 0);
@@ -36,5 +34,10 @@
 }
 
 .nav-item:hover {
-  background-color: lightgreen;
+  background-color: lightgrey;
 }
+.navbar.navbar .navbar-toggler-icon {
+  background-image: url('https://mdbootstrap.com/img/svg/hamburger1.svg?color=6a1b9a');
+}
+
+
