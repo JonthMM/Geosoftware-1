@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<head>
+  <title>Assignment 4 for Geosoftware 1</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--Bootstrap stylesheet -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <!-- Leaflet stylesheets -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+    integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+    crossorigin="" />
+
+  <!-- own stylesheet -->
+  <link rel="stylesheet" href="src4/style.css">
+
+  <!-- Leaflet libary -->
+  <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+    integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+    crossorigin=""></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+
+  <!-- Point javascript document -->
+  <script src="src4/point.js"></script>
+
+  <!-- Own javascript document -->
+  <script defer src="src4/script.js"></script>
+
+  <!--jQuery library -->
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+
+  <!-- Turf libary -->
+  <script src='https://unpkg.com/@turf/turf@6/turf.min.js'></script>
+
+  <!-- Bootstrap libary -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+  </script>
+
+  <!-- Popper libary -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+  </script>
+
+  <!-- Icon libary -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+
+
+  <style>
+    /* css to customize Leaflet default styles  */
+    .custom .leaflet-popup-tip,
+    .custom .leaflet-popup-content-wrapper {
+      background: #ffff00;
+      color: #158e00;
+    }
+
+    .custom2 .leaflet-popup-tip,
+    .custom2 .leaflet-popup-content-wrapper {
+      background: #55a2ff;
+      color: #000000;
+    }
+  </style>
+
+</head>
+
+<body onload="onLoad()">
+
+
+
+  <!-- Card -->
+  <div class="card text-center">
+
+    <!-- Header -->
+    <div class="card-header">
+
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-light white">
+
+        <!-- Navbar brand -->
+        <a class="navbar-brand" href="#"><img src="images/ifgi.png" width="120" height="60"
+            class="d-inline-block align-middle" alt="">
+          Geosoftware 1</a>
+
+        <!-- Collapse button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="navbar">
+
+          <!-- Links -->
+          <div class="navbar-nav">
+            <a class="nav-item nav-link" href="" target="_blank">
+              Assignment 2
+              <ion-icon name="locate-outline" style="color:#000000"></ion-icon>
+            </a>
+            <a class="nav-item nav-link" href="Aufgabe4/index.html" target="_blank">
+              Assignment 4
+              <ion-icon name="map-outline" style="color:#000000"></ion-icon>
+            </a>
+            <!-- Icon that opens my GitHub repository for the Geosoftware 1 Assignments -->
+            <a class="nav-item nav-link" href="https://github.com/JonthMM/Geosoftware-1" target="_blank">
+              GitHub
+              <ion-icon name="logo-github" style="color:#000000"></ion-icon>
+            </a>
+            <!-- Icon that opens my GitHub repository for the Geosoftware 1 Assignments -->
+            <a class="nav-item nav-link" href="https://stackoverflow.com/users/18894154/jonathan-mader" target="_blank">
+              stackoverflow
+              <ion-icon name="logo-stackoverflow" style="color:#000000"></ion-icon>
+            </a>
+            <a class="nav-item nav-link" href="https://sso.uni-muenster.de/LearnWeb/learnweb2/user/profile.php?id=98418"
+              target="_blank">
+              Learnweb Profile
+              <img src="images/learnweb.PNG" width="50" height="25">
+            </a>
+            <a class="nav-item nav-link" href="https://www.paypal.com/paypalme/JonMaMa" target="_blank">
+              Make a donation!
+              <ion-icon name="logo-paypal" style="color:#000000"></ion-icon>
+            </a>
+            <a class="nav-item nav-link" href="https://open.spotify.com/user/jonny_joo" target="_blank">
+              Follow me on spotify!
+              <ion-icon name="radio-outline" style="color:#000000"></ion-icon>
+            </a>
+            <a class="nav-item nav-link" href="https://www.instagram.com/jyjonny/" target="_blank">
+              Instagram
+              <ion-icon name="logo-instagram" style="color:#000000"></ion-icon>
+            </a>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <div align="center">
+      <div class="card-body">
+        <div class="container-fluid">
+          <h1>GeoSoftware 1 Assignment 4</h1>
+          <!-- Button that opens my GitHub repository for the Geosoftware 1 Assignments 
+    <div class="social">
+      <a href="https://github.com/JonthMM/Geosoftware-1" target="_blank"><ion-icon name="logo-github" style="color:#DE4C52"></ion-icon></a>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <div>
+      Assignment 04<br>
+      Course: Geosoftware I SoSe 2022 <br>
+      Author: Jonathan Mader <br> 
+      Please only view in max view, not in window mode!<br>
+    </div>
+    -->
+          <hr>
+          <br>
+          <a href="https://api.busradar.conterra.de/demo/index.html" target="_blank">Live Ansicht von conterra</a>
+
+          <br></br>
+
+          <a href="https://netzplan-muenster.de/#" target="_blank">Netzplan Live Ansicht der Stadt Münster</a>
+          <br></br>
+          <p>This Map shows all the bus stops in Münster, as well as the given point by the user <br> when using the
+            textarea point, standard point or uploaded point <br>
+            You also have the option to draw your own bounding box as rectangle in the beginning (before operation
+            textarea, standard or uploaded point), to select an area of the map in which the bus stops are being shown
+          </p>
+          <br>
+          <div id="busStopMap"></div>
+
+          <br></br>
+          <!-- Button to get the user position and insert it into the textarea -->
+          <div id="position">Click the button to get your coordinates</div>
+          <br>
+
+          <button class="getLocationButton" onclick="Positioning.getLocation()"">want your location?</button>
+    <br></br>
+
+    <!-- Textare to insert GeoJSON -->
+    <textarea type=" text" id="userPosition"
+            placeholder="Enter Point as geojson or click get position to use your position"></textarea>
+            <div id="errorforinput"></div>
+            <br>
+            <!-- Button to use the GeoJSON from the textarea, source for design: https://codepen.io/jh3y/pen/PoGbxLp-->
+            <button id="textareabutton" type="button" class="cybr-btn" onclick="Frontendfunctions.textareaInputPoint()">
+              <span aria-hidden class="cybr-btn__glitch"></span>
+              <span aria-hidden class="cybr-btn__tag">txtareacyberpunkstyle</span>
+              Use geojson input from textarea
+            </button>
+            <br></br>
+
+            <!-- Button to use the GeoJSON from the standard point from point.js -->
+            <button id="standardpointbutton" type="button" class="shine" onclick="Frontendfunctions.standardPoint()">
+
+              Use the given standardpoint</button>
+            <br></br>
+
+            <!-- Uploadarea with description for user, upload button to choose a file and error if upload went wrong -->
+            <div id="uploadInfo">Upload your own geojson that has the object type Point (no feature collection)</div>
+            <input type="file" id="uploadbutton">
+            <div id="errorforupload"></div>
+
+
+            <!-- Button to use the uploaded GeoJSON by the user, source: https://codepen.io/Alexb98/pen/XWrqpxB -->
+            <button id="uploadedpointbutton" type="button" class="animated-button1"
+              onclick="Frontendfunctions.uploadedPoint()">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              USE UPLOADED GEOJSON
+            </button>
+
+            <!-- Header for the first table to let the user know better which two bus stops the depatures are from -->
+            <p id="nearestStopTableHeader"></p>
+
+            <!-- First table with Busline number, direction of the bus as last bus stop from the route and the date and time of the depature as YYYY:MM:DD:T:hh:mm:ss
+    so you currently have to add 2 hours for the real time depatures  -->
+            <table id="nearestStopTable">
+              <tr>
+                <th>Busline</th>
+                <th>Direction</th>
+                <th>Date and time of departure</th>
+              </tr>
+            </table>
+            <br>
+            <!-- Header for the first table to let the user know better which two bus stops the depatures are from -->
+            <p id="secondNearestStopTableHeader"></p>
+            <table id="secondNearestStopTable">
+              <tr>
+                <th>Busline</th>
+                <th>Direction</th>
+                <th>Date and time of departure</th>
+              </tr>
+            </table>
+
+            <!-- Second table with header for user to read the table better, table shows the bus stop name, the distance, direction in text and the coordinates of the bus stops -->
+            <p>list of busstops sorted ascending by distance with direction to compare to the first table</p>
+            <table id="allBusStopsTable">
+              <tr>
+                <th>Bus stop name</td>
+                <th>Distance (in meters)</td>
+                <th>Direction</th>
+                <th>Coordinates</td>
+              </tr>
+            </table>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="startingpage.html" target="_blank">Impressum</a>
+      </div>
+
+</body>
+
+</HTML>

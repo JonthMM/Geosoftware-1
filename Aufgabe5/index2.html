@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Assignment 1 for Geosoftware 1</title>
+    <script defer src="src2/point.js"></script>
+    <script defer src="src2/pois.js"></script>
+    <script defer src="src2/script.js"></script>
+
+    <!--Bootstrap stylesheet -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- own stylesheet -->
+    <link rel="stylesheet" href="src2/style.css">
+
+    <!--jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+
+    <!-- Bootstrap libary -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+
+    <!-- Icon libary -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+</head>
+
+<body onload="onLoad()">
+
+        <!-- Header -->
+        <div class="card-header">
+
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-light white">
+
+                <!-- Navbar brand -->
+                <a class="navbar-brand" href="#"><img src="images/ifgi.png" width="120" height="60"
+                        class="d-inline-block align-middle" alt="">
+                    Geosoftware 1</a>
+
+                <!-- Collapse button -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar"
+                    aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Collapsible content -->
+                <div class="collapse navbar-collapse" id="navbar">
+
+                    <!-- Links -->
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link" href="index2.html" target="_blank">
+                            Assignment 2
+                            <ion-icon name="locate-outline" style="color:#000000"></ion-icon>
+                        </a>
+                        <a class="nav-item nav-link" href="index4.html" target="_blank">
+                            Assignment 4
+                            <ion-icon name="map-outline" style="color:#000000"></ion-icon>
+                        </a>
+                        <!-- Icon that opens my GitHub repository for the Geosoftware 1 Assignments -->
+                        <a class="nav-item nav-link" href="https://github.com/JonthMM/Geosoftware-1" target="_blank">
+                            GitHub
+                            <ion-icon name="logo-github" style="color:#000000"></ion-icon>
+                        </a>
+                        <!-- Icon that opens my GitHub repository for the Geosoftware 1 Assignments -->
+                        <a class="nav-item nav-link" href="https://stackoverflow.com/users/18894154/jonathan-mader"
+                            target="_blank">
+                            stackoverflow
+                            <ion-icon name="logo-stackoverflow" style="color:#000000"></ion-icon>
+                        </a>
+                        <a class="nav-item nav-link"
+                            href="https://sso.uni-muenster.de/LearnWeb/learnweb2/user/profile.php?id=98418"
+                            target="_blank">
+                            Learnweb Profile
+                            <img src="images/learnweb.PNG" width="50" height="25">
+                        </a>
+                        <a class="nav-item nav-link" href="https://www.paypal.com/paypalme/JonMaMa" target="_blank">
+                            Make a donation!
+                            <ion-icon name="logo-paypal" style="color:#000000"></ion-icon>
+                        </a>
+                        <a class="nav-item nav-link" href="https://open.spotify.com/user/jonny_joo" target="_blank">
+                            Follow me on spotify!
+                            <ion-icon name="radio-outline" style="color:#000000"></ion-icon>
+                        </a>
+                        <a class="nav-item nav-link" href="https://www.instagram.com/jyjonny/" target="_blank">
+                            Instagram
+                            <ion-icon name="logo-instagram" style="color:#000000"></ion-icon>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+    <div id="position">Click the button to get your coordinates</div>
+    <button id="getLocationBtn" class="button" type="button">get position</button>
+    <br></br>
+    <textarea type="text" id="location"
+        placeholder="Enter Point as geojson or click get position to use your position"></textarea>
+    <br></br>
+    <button id="textareabutton" type="button" class="button" onclick="Frontendfunctions.textareaInputPoint()">Use geojson input from textarea</button>
+    <br></br>
+    <button id="standardpointbutton" type="button" class="button" onclick="Frontendfunctions.standardPoint()">Use the given standard point</button>
+    <div id="uploadInfo">Upload your own geojson that has the object type Point (no feature collection)</div>
+    <input type="file" id="uploadbutton"><br>
+    <br>
+    <button id="uploadedpointbutton" type="button" class="button" onclick="Frontendfunctions.uploadedPoint()">Use uploaded geojson</button>
+    <br></br>
+    <table id="resultTable">
+        <tr>
+            <th>Coordinates</td>
+            <th>Point of Interest</td>
+            <th>Distance (in meters)</td>
+        </tr>
+    </table>
+    <br>
+    <div class="card-footer">
+        <a href="startingpage.html" target="_blank">Impressum</a>
+    </div>
+</body>
+
+</HTML>
