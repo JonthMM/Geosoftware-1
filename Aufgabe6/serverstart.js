@@ -11,7 +11,7 @@
 // jshint -W097
 
 
-var ObjectId = require('mongodb');
+var ObjectId = require('mongodb').ObjectID;
 const mongodb = require('mongodb');
 const express = require('express');
 let bodyParser = require('body-parser');
