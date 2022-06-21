@@ -28,5 +28,5 @@ body-parser <br>
 jquery <br>
 for the app to work with npm install "name"
 
-To start the server, you then need to type: nodemon Aufgabe6/serverstart.js and then STRG+Click on the http://localhost:5000 url
+To start the server, you then need to type: nodemon Aufgabe6/serverstart.js and then STRG+Click on the http://localhost:5000 url (given that node is installed and nodemon is set up)
 
