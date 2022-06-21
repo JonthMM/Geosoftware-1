@@ -17,7 +17,7 @@ or deleted when they are stored in the mongoDB.
 For the forward geocoding you need a MapBox access Token at var access_token = "access Token" in /public/locationcreationmap
 
 Also, due to the large size of node_modules we did not upload them. Instead, if you clone the whole Geosoftware-1 repository you have to go to the terminal in VS-Code.
-Then type npm init and confirm everything except the entry point (the starting file), this has to be set to Aufgabe6/serverstart.js.
+Then type "npm init" and confirm everything except the entry point (the starting file), this has to be set to "Aufgabe6/serverstart.js".
 After that type npm install package.json
 
 If the two steps above were successfull, you need to install <br>
@@ -25,7 +25,7 @@ express <br>
 mongodb <br>
 body-parser <br>
 jquery <br>
-for the app to work with npm install "name"
+for the app to work with "npm install ..."
 
 To start the server, you then need to type: nodemon Aufgabe6/serverstart.js or nodemon start and then STRG+Click on the http://localhost:5000 url (given that node is installed and nodemon is set up)
 
