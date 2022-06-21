@@ -91,7 +91,7 @@ async function forwardGeocoding() {
   var nr = document.getElementById('nr').value;
   var city = document.getElementById('city').value;
   // fill in your MapBox access token here:
-  var access_token = "pk.eyJ1Ijoiam9udGhubW0iLCJhIjoiY2w0bG0yMWhxMHJrMTNjbW54MHE0bnl5bCJ9.YhVs13HNWHkrQs8WHwETrw";
+  var access_token = "";
 
   userAdressInput = street + ' ' + nr + ' ,' + city;
   var resource = "https://api.mapbox.com/geocoding/v5/mapbox.places/" + street + "%20" + nr + "%20" + city + ".json?country=DE&access_token=" + access_token;
