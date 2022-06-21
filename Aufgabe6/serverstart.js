@@ -30,8 +30,8 @@ async function connectMongoDB() {
     app.locals.dbConnection = await mongodb.MongoClient.connect("mongodb://localhost:27017", {
       useNewUrlParser: true
     });
-    // connect do database "itemdb"
-    app.locals.db = await app.locals.dbConnection.db("itemdb");
+    // connect to my database "locationsdatabase"
+    app.locals.db = await app.locals.dbConnection.db("locationsdatabase");
     console.log("Using db: " + app.locals.db.databaseName);
   } catch (error) {
     console.dir(error);
