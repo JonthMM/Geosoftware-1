@@ -1,6 +1,7 @@
 </strong></h1>Aufgabe6</strong></h1>
+<h4>Authors:  Jonathan Mader, matr.Nr.: 502644 - Erkam Dogan, matr.Nr.: 508236 -  Kieran Galbraith, matr.Nr.: 453493</h4>
 
-My files for the 6th Assignment of the Geosoftware 1 course
+Our files for the 6th Assignment of the Geosoftware 1 course
 
 The first website gives information about the busstops in Münster and lets the user get information about the time of depature,
 the busline and the direction of the bus from a choosen busstop that is clicked on on the map.
