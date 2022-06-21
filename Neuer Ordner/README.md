@@ -1,4 +1,4 @@
-</strong></h1>Aufgabe6</strong></h1>
+</strong></h1>Aufgabe 6</strong></h1>
 <h4>Authors:  Jonathan Mader, matr.Nr.: 502644 - Erkam Dogan, matr.Nr.: 508236 -  Kieran Galbraith, matr.Nr.: 453493</h4>
 
 Our files for the 6th Assignment of the Geosoftware 1 course
