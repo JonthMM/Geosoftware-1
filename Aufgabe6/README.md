@@ -17,7 +17,7 @@ or deleted when they are stored in the mongoDB.
 For the forward geocoding you need a MapBox access Token at var access_token = "access Token"
 
 Also, due to the large size of node_modules we did not upload them. Instead, if you clone the whole Geosoftware-1 repository you have to go to the terminal.
-Then type npm init and confirm everything except the main starting file, this has to be set to serverstart.js.
+Then type npm init and confirm everything except the main starting file, this has to be set to Aufgabe6/serverstart.js.
 
 After that type npm install package.json
 
