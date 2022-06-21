@@ -16,5 +16,13 @@ or deleted when they are stored in the mongoDB.
 
 For the forward geocoding you need a MapBox access Token at var access_token = "access Token"
 
-You need to install express, mongodb, body-parser and jquery for the app to work
-(npm install ...)
+Also, due to the large size of node_modules we did not upload them. Instead, if you clone the repository you have to go to the terminal.
+Then type npm -i and confirm everything.
+After that type npm install package.json
+
+If the two steps above were successfull, you need to install 
+express
+mongodb
+body-parser
+jquery 
+for the app to work with npm install "name"
