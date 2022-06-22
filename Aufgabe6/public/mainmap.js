@@ -178,5 +178,12 @@ var mainMapMarker = [];
 function mainMapUserInput(convertedAdress) {
   mainMapMarker.length = 0;
   mainMapMarker = L.marker([convertedAdress[1], convertedAdress[0]], {
+    icon: positioning
   }).addTo(basemap);
 }
+
+// styling for the icon for the positioning on the map
+var positioning = L.icon({
+  iconUrl: 'public/position.png',
+  iconSize: [25, 25], // size of the icon
+});
