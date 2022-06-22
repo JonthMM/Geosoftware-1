@@ -39,7 +39,7 @@ L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 function addBusStops() {
 
   var busStops;
-  allBusstops = L.geoJSON((pointcloud), {
+  var allBusstops = L.geoJSON((pointcloud), {
     pointToLayer: function (features, latlng) {
       return L.circle(latlng);
     },
