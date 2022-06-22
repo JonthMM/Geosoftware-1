@@ -94,7 +94,7 @@ app.post('/save-input', (req, res) => {
   app.locals.db.collection('items').insertOne(req.body);
 });
 
-// deleting ddata to the given database
+// deleting data to the given database
 app.delete('/delete-input', (req, res) => {
   app.locals.db.collection('items').deleteOne({
     '_id': ObjectId(req.body._id)
