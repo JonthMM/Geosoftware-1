@@ -113,7 +113,7 @@ async function forwardGeocoding() {
 
 function geocodingInputMapping() {
   geocodedMarker = L.marker([geocodedAdress[1], geocodedAdress[0]], {
-
+    icon: positioning
   }).addTo(map);
   geocodedMarker.bindPopup(userAdressInput).openPopup();
   inputLocation = [geocodedMarker._latlng.lng, geocodedMarker._latlng.lat];
@@ -129,13 +129,19 @@ function geocodingInputMapping() {
  */
 function userLocationMapping() {
   L.marker([inputLocation[1], inputLocation[0]], {
-
+    icon: positioning
   }).addTo(map);
   properties = {
     "kind_of_input": "browser Location"
   };
   JSONconvertion(inputLocation, properties);
 }
+
+// styling for the icon for the positioning on the map
+var positioning = L.icon({
+  iconUrl: 'public/position.png',
+  iconSize: [25, 25], // size of the icon
+});
 
 /**
  * @function JSONconvertion
