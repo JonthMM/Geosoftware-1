@@ -78,7 +78,8 @@ map.on('draw:created', function (e) {
 /**
  * @function forwardGeocoding
  * @desc forward geocoding from an adress to coordinates with the MapBox Geocoding API 
- * @additional you need an MapBox access token, get yours here by registering: https://www.mapbox.com/
+ * @additional you can use your own MapBox access token, get yours here by registering: https://www.mapbox.com/
+ * or just use the standard one from the source!
  * @source: https://docs.mapbox.com/api/search/geocoding/
  */
 var geocodedAdress = [];
@@ -90,7 +91,7 @@ async function forwardGeocoding() {
   var street = document.getElementById('street').value;
   var nr = document.getElementById('nr').value;
   var city = document.getElementById('city').value;
-  // fill in your MapBox access token here:
+  // fill in your MapBox access token here (or use this standard key):
   var access_token = "pk.eyJ1Ijoiam9udGhubW0iLCJhIjoiY2w0bG0yMWhxMHJrMTNjbW54MHE0bnl5bCJ9.YhVs13HNWHkrQs8WHwETrw";
 
   userAdressInput = street + ' ' + nr + ' ,' + city;
