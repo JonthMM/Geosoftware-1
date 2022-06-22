@@ -10,9 +10,6 @@
 // jshint node: true
 // jshint -W097
 
-
-var ObjectId = require('mongodb').ObjectID;
-
 /*
 This part sadly isn't working out for us, we did not get it work that leaflet is loaded over the node-modules and not over an external CDN
 We followed this: https://github.com/ryerson-ggl/tutorial-express-leaflet
@@ -28,6 +25,7 @@ global.navigator = { userAgent: 'nodejs', platform: 'nodejs' }
 
 const L = require('leaflet')
 */
+var ObjectId = require('mongodb').ObjectID;
 const mongodb = require('mongodb');
 const express = require('express');
 let bodyParser = require('body-parser');
@@ -67,15 +65,20 @@ app.use('/update-input', bodyParser.json());
 app.use('/item', bodyParser.json());
 
 
-// sending busInformationPage to / to be the main index
+// sending busInformationPage to / if reqeusted to be the main index
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/busInformationPage.html');
 });
 
-// sending locationcreator to be the linked index
+// sending locationcreator to be the linked website for the navigation to work if requested
 app.get('/locationcreator.html', (req, res) => {
   res.sendFile(__dirname + '/locationcreator.html');
 });
+
+/**
+ * @source http://mongodb.github.io/node-mongodb-native/3.1/tutorials/crud/
+ * @source https://www.w3schools.com/nodejs/nodejs_mongodb.asp
+*/
 
 // handler for getting items
 app.get('/item', (req, res) => {
@@ -95,6 +98,7 @@ app.post('/save-input', (req, res) => {
 });
 
 // deleting data to the given database
+// via https://www.w3schools.com/nodejs/nodejs_mongodb_delete.asp
 app.delete('/delete-input', (req, res) => {
   app.locals.db.collection('items').deleteOne({
     '_id': ObjectId(req.body._id)
@@ -102,6 +106,7 @@ app.delete('/delete-input', (req, res) => {
 });
 
 // updating data stored in the given database
+// via https://www.w3schools.com/nodejs/nodejs_mongodb_update.asp
 app.put('/update-input', (req, res) => {
   app.locals.db.collection('items').updateOne({
     '_id': ObjectId(req.body._id)
