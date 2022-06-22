@@ -118,6 +118,7 @@ function geocodingInputMapping() {
   geocodedMarker.bindPopup(userAdressInput).openPopup();
   inputLocation = [geocodedMarker._latlng.lng, geocodedMarker._latlng.lat];
   properties = {
+    "Name": document.getElementById('street').value + " " + document.getElementById('nr').value + ", " + document.getElementById('city').value,
     "kind_of_input": "adress"
   };
   JSONconvertion(inputLocation, properties);
